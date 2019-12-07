@@ -1,0 +1,22 @@
+{
+  "name": "10-node-liri",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dragon-stark/Liri-node-app.git"
+  },
+  "author": "EH",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dragon-stark/Liri-node-app/issues"
+  },
+  "homepage": "https://github.com/dragon-stark/Liri-node-app#readme",
+  "dependencies": {
+    "node-spotify-api": "^1.1.1"
+  }
+}
