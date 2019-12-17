@@ -1,5 +1,3 @@
-
-
 var fs = require("fs");
 var keys = require("./keys");
 var request = require("request");
@@ -13,7 +11,7 @@ var input = process.argv.slice(3).join(" ");
 
 // begin api function for concert-this
 
-var bandsintown = function (input)
+var bandsintown = function (band)
 {
   axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp").then(function (response)
   {
@@ -38,35 +36,46 @@ var bandsintown = function (input)
   }
   )
 }
+// end bandsintown
 
-function spotify (input)
+function getArtist (artist)
 {
-  spotify.search({
-    type: "track", query: input
-    , limit: 2
-  }).then(function (response)
+  return artist.name;
+};
+
+function findSong (song)
+{
+  if (song === undefined) {
+    song = "The Sign"
+  }
+
+  // beginning of API call
+
   {
-    var data = response.tracks.items[0];
-    console.log("")
-  })
+    spotify.search({
+      type: "track",
+      query: song
+    },
+      function (err, data)
+      {
+        if (err) {
+          console.log("Error Occurred: " + err)
+        }
+
+        var music = data.tracks.items;
+        for (var i = 0; i < music.length; i++) {
+          console.log(i);
+          console.log("artist(s): " + music[i].artists.map(getArtist));
+          console.log("song name: " + music[i].name);
+          console.log("preview song: " + music[i].preview_url);
+          console.log("album: " + music[i].album.name);
+          console.log("-----------------------------------");
+        }
+      }
+    );
+  };
 }
-
-// if (!data.length) {
-//   console.log("Sorry, nothing found for " + input);
-//   return;
-// }
-// console.log("Songs for " + input);
-// for (var i = 0; i < data.length; i++) {
-//   var band = data[i];
-//   console.log(
-
-//   )
-// }
-
-
-
-
-
+// end spotify
 
 
 // switch statement (if/else) or conditional statement
@@ -75,7 +84,11 @@ var select = function (caseData, functionData)
   switch (caseData) {
     case "concert-this": bandsintown(functionData);
       break;
-    case "spotify-this-song":
+    case "spotify-this": findSong(functionData);
+      break;
+    case "movie-this": movie(functionData);
+      break;
+
     // enter next case data here . (case, command and then the break)
     default: console.log("Error")
   }
