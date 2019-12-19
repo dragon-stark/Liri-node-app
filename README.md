@@ -11,10 +11,10 @@
 
 ![Liri-Node-Application](LiriDemo.gif)
 
+## LiriBot is a command line Node application that takes in parameters and gives you back data on your search.
+
 ### LIRI is the way to search:
 
 - _Spotify_ for songs,
 - _Bands in Town_ for concerts, and
 - _OMDB_ for movies.
-
-## LiriBot is a command line Node application that takes in parameters and gives you back data on your search.
